@@ -25,6 +25,11 @@
 
 
 import processing.core.PApplet;
+//Salvando para arquivo
+import java.io.IOException; /* (Preciso desse tambem?) */
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
 class Graph
 {
@@ -152,6 +157,10 @@ class Graph
 
     public void Plot()
     {
+	// !!! Comecei a mexer aqui !!!
+	save2File(this.posX,this.posY); // chama um metodo novo pra salvar os dados em arquivo
+	// !!! Parei de mexer !!!
+	
 	// Plot Background
 	this.parent.fill( PLOT_COL );
 	this.parent.stroke( PLOT_COL );
@@ -401,7 +410,13 @@ class Graph
 		}
 	    }
 	}
-    }    
+    }
+    
+    //Metodo novo pra salvar os dados em arquivo
+    public save2File(float posX, float posY){
+        Path myPath = Paths.get("saved-data/plot.dat");
+        Files.write(myPath, posX, posY);
+    }
 
     // Constants
     private static final float AXIS_COV = 0.75f;
