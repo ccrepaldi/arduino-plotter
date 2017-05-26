@@ -414,8 +414,11 @@ class Graph
     
     //Metodo novo pra salvar os dados em arquivo
     public save2File(float posX, float posY){
+	float[] xyM = new float[2]; // vetor com os dados de x e y no primeiro e segundo elemento
+	xyM[0] = posX;
+	xyM[1] = posY;
         Path myPath = Paths.get("saved-data/plot.dat");
-        Files.write(myPath, posX, posY);
+        Files.write(myPath, xyM, StandardOpenOption.APPEND); // printa uma linha posX posY no arquivo plot.dat
     }
 
     // Constants
